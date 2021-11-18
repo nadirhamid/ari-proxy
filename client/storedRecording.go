@@ -1,6 +1,7 @@
 package client
 
 import (
+	"errors"
 	"github.com/CyCoreSystems/ari-proxy/v5/proxy"
 	"github.com/CyCoreSystems/ari/v5"
 )
@@ -52,6 +53,10 @@ func (s *storedRecording) Copy(key *ari.Key, dest string) (*ari.StoredRecordingH
 
 	// NOTE: Always return the handle, even when we have an error
 	return h, err
+}
+
+func (s *storedRecording) File(key *ari.Key) ([]byte, error) {
+        return nil, errors.New("Not implemented")
 }
 
 func (s *storedRecording) Delete(key *ari.Key) error {

@@ -406,6 +406,21 @@ func (c *channel) Subscribe(key *ari.Key, n ...string) ari.Subscription {
 	return c.c.Bus().Subscribe(key, n...)
 }
 
+func (c *channel) Unsubscribe(key *ari.Key, n ...string) ari.Subscription {
+	err := c.c.commandRequest(&proxy.Request{
+		Kind: "ChannelUnsubscribe",
+		Key:  key,
+	})
+	if err != nil {
+		c.c.log.Warn("failed to call channel unsubscribe")
+		if key.Dialog != "" {
+			c.c.log.Error("dialog present; failing")
+			return nil
+		}
+	}
+	return c.c.Bus().Unsubscribe(key, n...)
+}
+
 func (c *channel) GetVariable(key *ari.Key, name string) (string, error) {
 	data, err := c.c.dataRequest(&proxy.Request{
 		Kind: "ChannelVariableGet",

@@ -501,6 +501,8 @@ func (s *Server) dispatchRequest(ctx context.Context, reply string, req *proxy.R
 		f = s.channelStopSilence
 	case "ChannelSubscribe":
 		f = s.channelSubscribe
+	case "ChannelUnsubscribe":
+		f = s.channelUnsubscribe
 	case "ChannelUnmute":
 		f = s.channelUnmute
 	case "ChannelVariableGet":
@@ -547,6 +549,8 @@ func (s *Server) dispatchRequest(ctx context.Context, reply string, req *proxy.R
 		f = s.playbackSubscribe
 	case "RecordingStoredCopy":
 		f = s.recordingStoredCopy
+	case "RecordingStoredFile":
+		f = s.recordingStoredFile
 	case "RecordingStoredData":
 		f = s.recordingStoredData
 	case "RecordingStoredDelete":

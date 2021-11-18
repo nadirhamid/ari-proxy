@@ -18,6 +18,12 @@ func (s *Server) recordingStoredCopy(ctx context.Context, reply string, req *pro
 	})
 }
 
+func (s *Server) recordingStoredFile(ctx context.Context, reply string, req *proxy.Request) {
+	// not implemented
+}
+
+
+
 func (s *Server) recordingStoredData(ctx context.Context, reply string, req *proxy.Request) {
 	data, err := s.ari.StoredRecording().Data(req.Key)
 	if err != nil {

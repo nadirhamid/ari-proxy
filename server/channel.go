@@ -410,6 +410,10 @@ func (s *Server) channelSubscribe(ctx context.Context, reply string, req *proxy.
 	s.sendError(reply, nil)
 }
 
+func (c *channel) channelUnsubscribe(key *ari.Key, n ...string) {
+	return s.sendError(reply, s.ari.Channel().Unsubscribe(req.Key))
+}
+
 func (s *Server) channelUnmute(ctx context.Context, reply string, req *proxy.Request) {
 	s.sendError(reply, s.ari.Channel().Unmute(req.Key, req.ChannelMute.Direction))
 }
