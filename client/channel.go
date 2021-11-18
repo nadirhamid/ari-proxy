@@ -406,7 +406,7 @@ func (c *channel) Subscribe(key *ari.Key, n ...string) ari.Subscription {
 	return c.c.Bus().Subscribe(key, n...)
 }
 
-func (c *channel) Unsubscribe(key *ari.Key, n ...string) ari.Subscription {
+func (c *channel) Unsubscribe(key *ari.Key, n ...string) {
 	err := c.c.commandRequest(&proxy.Request{
 		Kind: "ChannelUnsubscribe",
 		Key:  key,
