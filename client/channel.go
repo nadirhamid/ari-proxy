@@ -415,10 +415,10 @@ func (c *channel) Unsubscribe(key *ari.Key, n ...string) {
 		c.c.log.Warn("failed to call channel unsubscribe")
 		if key.Dialog != "" {
 			c.c.log.Error("dialog present; failing")
-			return nil
+			return
 		}
 	}
-	return c.c.Bus().Unsubscribe(key, n...)
+	c.c.Bus().Unsubscribe(key, n...)
 }
 
 func (c *channel) GetVariable(key *ari.Key, name string) (string, error) {
